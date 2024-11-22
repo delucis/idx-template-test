@@ -1,0 +1,66 @@
+{
+	"name": "Astro Starter Kit: Blog",
+	"description": "The blog starter for Astro",
+	"icon": "https://raw.githubusercontent.com/withastro/astro.build/refs/heads/main/public/assets/press/astro-icon-light-gradient.svg",
+	"params": [
+		{
+			"id": "typescript",
+			"name": "How strict should TypeScript be?",
+			"type": "enum",
+			"default": "strict",
+			"options": {
+				"strict": "Strict (recommended)",
+				"strictest": "Strictest",
+				"base": "Relaxed"
+			},
+			"required": true
+		},
+		{
+			"id": "template",
+			"name": "Starter template",
+			"type": "enum",
+			"default": "basics",
+			"options": {
+				"basics": "Just the Basics",
+				"blog": "Blog",
+				"starlight": "Starlight",
+				"starlog": "Starlog",
+				"portfolio": "Portfolio",
+				"minimal": "Empty Project",
+				"framework-react": "React",
+				"framework-preact": "Preact",
+				"framework-vue": "Vue",
+				"framework-svelte": "Svelte",
+				"framework-lit": "Lit",
+				"framework-solid": "Solid",
+				"framework-alpine": "Solid",
+				"framework-multiple": "Kitchen Sink (Multiple Frameworks)",
+				"with-tailwindcss": "Tailwind CSS",
+				"with-markdoc": "Markdoc",
+				"with-mdx": "MDX",
+				"with-nanostores": "Nanostores",
+				"with-vitest": "Vitest",
+				"component": "Component",
+				"container-with-vitest": "Container with Vitest",
+				"hackernews": "Hackernews",
+				"integration": "Integration",
+				"ssr": "SSR",
+				"toolbar-app": "Toolbar App",
+				"starlight/markdoc": "Starlight Markdoc",
+				"starlight/tailwind": "Starlight Tailwind"
+			},
+			"required": true
+		},
+		{
+			"id": "version",
+			"name": "Astro version",
+			"type": "enum",
+			"default": "latest",
+			"options": {
+				"latest": "Latest stable release",
+				"next": "Next experimental release"
+			},
+			"required": true
+		}
+	]
+}
