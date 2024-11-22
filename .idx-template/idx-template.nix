@@ -4,7 +4,6 @@
   astroVersion ? "latest",
   packageManager ? "npm",
   typescript ? "strict",
-  git ? true,
   ...
 }:
 {
@@ -22,7 +21,7 @@
     ${
       if packageManager == "npm" then
         "npm create astro@${astroVersion} \"$out\" -- --template ${astroTemplate} --typescript ${typescript} ${
-          if git then "--git" else "--no-git"
+          "--git"
         } --no-install"
       else
         ""
