@@ -16,7 +16,7 @@
 			"required": true
 		},
 		{
-			"id": "template",
+			"id": "astroTemplate",
 			"name": "Starter template",
 			"type": "enum",
 			"default": "basics",
@@ -52,7 +52,7 @@
 			"required": true
 		},
 		{
-			"id": "version",
+			"id": "astroVersion",
 			"name": "Astro version",
 			"type": "enum",
 			"default": "latest",

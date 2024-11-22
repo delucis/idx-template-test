@@ -1,4 +1,4 @@
-{pkgs, template ? "basics", version ? "latest", packageManager ? "npm", typescript ? "strict", git ? true, ... }: {
+{pkgs, astroTemplate ? "basics", astroVersion ? "latest", packageManager ? "npm", typescript ? "strict", git ? true, ... }: {
   packages = [
     pkgs.nodejs_20
     pkgs.yarn
@@ -11,7 +11,7 @@
   bootstrap = ''
     mkdir "$out"
     ${
-      if packageManager == "npm" then "npm create astro@${version} \"$out\" -- --template ${template} --typescript ${typescript} ${if git then "--git" else "--no-git" } --no-install"
+      if packageManager == "npm" then "npm create astro@${astroVersion} \"$out\" -- --template ${astroTemplate} --typescript ${typescript} ${if git then "--git" else "--no-git" } --no-install"
       else ""
     }
 
