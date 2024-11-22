@@ -4,18 +4,6 @@
 	"icon": "https://raw.githubusercontent.com/withastro/astro.build/refs/heads/main/public/assets/press/astro-icon-light-gradient.svg",
 	"params": [
 		{
-			"id": "typescript",
-			"name": "How strict should TypeScript be?",
-			"type": "enum",
-			"default": "strict",
-			"options": {
-				"strict": "Strict (recommended)",
-				"strictest": "Strictest",
-				"base": "Relaxed"
-			},
-			"required": true
-		},
-		{
 			"id": "astroTemplate",
 			"name": "Starter template",
 			"type": "enum",
