@@ -2,7 +2,6 @@
   pkgs,
   astroTemplate ? "basics",
   astroVersion ? "latest",
-  packageManager ? "npm",
   typescript ? "strict",
   ...
 }:
@@ -12,27 +11,17 @@
     pkgs.yarn
     pkgs.nodePackages.pnpm
     pkgs.bun
-    pkgs.j2cli
     pkgs.nixfmt
   ];
 
   bootstrap = ''
     mkdir "$out"
-    ${
-      if packageManager == "npm" then
-        "npm create astro@${astroVersion} \"$out\" -- --template ${astroTemplate} --typescript ${typescript} ${
-          "--git"
-        } --no-install"
-      else
-        ""
-    }
+    npm create astro@${astroVersion} \"$out\" -- --template ${astroTemplate} --typescript ${typescript} --git --no-install
 
     mkdir -p "$out"/.idx
-    cp ./dev.nix "$out"/.idx/dev.nix
-    cp ./icon.png "$out"/.idx/icon.png
+    cp ${./dev.nix} "$out/.idx/dev.nix"
+    cp ${./icon.png} "$out/.idx/icon.png"
 
-    ${
-      if packageManager == "npm" then "( cd \$out && npm i --package-lock-only --ignore-scripts )" else ""
-    }
+    ( cd \$out && npm i --package-lock-only --ignore-scripts )
   '';
 }
