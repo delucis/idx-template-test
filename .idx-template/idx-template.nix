@@ -7,10 +7,6 @@
 {
   packages = [
     pkgs.nodejs_20
-    pkgs.yarn
-    pkgs.nodePackages.pnpm
-    pkgs.bun
-    pkgs.nixfmt
   ];
 
   bootstrap = ''
