@@ -29,8 +29,7 @@
     }
 
     mkdir -p "$out"/.idx
-    packageManager=${packageManager} j2 ${./devNix.j2} -o "$out"/.idx/dev.nix
-    nixfmt "$out"/.idx/dev.nix
+    cp ./dev.nix "$out"/.idx/dev.nix
     cp ./icon.png "$out"/.idx/icon.png
 
     ${

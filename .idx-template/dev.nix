@@ -1,34 +1,13 @@
-{% set perPackageManager = {
-    "npm": {
-        "packages": "pkgs.nodejs_20",
-        "onCreate": "npm ci --prefer-offline --no-audit --no-progress --timing || npm i --no-audit --no-progress --timing",
-        "previewCmdPrefix": "\"npm\" \"run\" \"dev\" \"--\""
-    },
-    "bun": {
-        "packages": "pkgs.bun",
-        "onCreate": "bun install",
-        "previewCmdPrefix": "\"bunx\" \"--bun\" \"astro\" \"dev\""
-    },
-    "pnpm": {
-        "packages": "pkgs.nodejs_20 pkgs.nodePackages.pnpm",
-        "onCreate": "pnpm install",
-        "previewCmdPrefix": "\"pnpm\" \"run\" \"dev\""
-    },
-    "yarn": {
-        "packages": "pkgs.nodejs_20 pkgs.yarn",
-        "onCreate": "yarn",
-        "previewCmdPrefix": "\"yarn\" \"dev\""
-    },
-}[packageManager]%}
 # To learn more about how to use Nix to configure your environment
 # see: https://developers.google.com/idx/guides/customize-idx-env
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Which nixpkgs channel to use.
   channel = "stable-24.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
-  packages = [{{perPackageManager.packages}}];
+  packages = [ pkgs.nodejs_20 ];
   # Sets environment variables in the workspace
-  env = {};
+  env = { };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
@@ -37,7 +16,7 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        install = "{{perPackageManager.onCreate}}";
+        install = "npm ci --prefer-offline --no-audit --no-progress --timing || npm i --no-audit --no-progress --timing";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [ "src/pages/index.astro" ];
       };
@@ -48,7 +27,16 @@
       enable = true;
       previews = {
         web = {
-          command = [{{perPackageManager.previewCmdPrefix}} "--port" "$PORT" "--hostname" "0.0.0.0"];
+          command = [
+            "npm"
+            "run"
+            "dev"
+            "--"
+            "--port"
+            "$PORT"
+            "--hostname"
+            "0.0.0.0"
+          ];
           manager = "web";
         };
       };
